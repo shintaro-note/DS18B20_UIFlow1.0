@@ -1,5 +1,5 @@
-<svg width="1060" height="660" viewBox="0 0 1060 660" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Hiragino Sans', sans-serif">
-  <rect width="1060" height="660" fill="#ffffff"/>
+<svg width="1060" height="675" viewBox="0 0 1060 675" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Hiragino Sans', sans-serif">
+  <rect width="1060" height="675" fill="#ffffff"/>
 
   <text x="20" y="30" font-size="18" font-weight="bold" fill="#222">DS18B20 複数センサー配線図(レベルシフト + デイジーチェーン)</text>
   <text x="20" y="50" font-size="11" fill="#777">行の並び(上から): GND / 3.3V制御 / DQ / 電源(5V,VDD)</text>
@@ -148,6 +148,7 @@
   </g>
 
   <text x="20" y="590" font-size="12" fill="#555">注記:</text>
-  <text x="20" y="610" font-size="12" fill="#555">・レベルシフタVCCA用の3.3Vは、この図ではGPIO17を machine.Pin(17, Pin.OUT); value(1) でHIGH固定して代用する例を示しています(ds18b20_multi.py自体はこの処理を含みません。3端子レギュレータやM5-Busの3V3ピンなど、他の3.3V供給方法でも構いません)</text>
-  <text x="20" y="628" font-size="12" fill="#555">・プルアップ抵抗(2.2〜4.7kΩ)はB面(5V側)のDQ線(B0)とVCCB間に1箇所だけ入れればよい</text>
+  <text x="20" y="610" font-size="12" fill="#555">・レベルシフタVCCA用の3.3Vは、この図ではGPIO17を machine.Pin(17, Pin.OUT); value(1) でHIGH固定して代用する例を示しています</text>
+  <text x="20" y="628" font-size="12" fill="#555">  (ds18b20_multi.py自体はこの処理を含みません。3端子レギュレータやM5-Busの3V3ピンなど、他の3.3V供給方法でも構いません)</text>
+  <text x="20" y="646" font-size="12" fill="#555">・プルアップ抵抗(2.2〜4.7kΩ)はB面(5V側)のDQ線(B0)とVCCB間に1箇所だけ入れればよい</text>
 </svg>
