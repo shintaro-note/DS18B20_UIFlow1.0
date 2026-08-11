@@ -70,7 +70,7 @@ from ds18b20_multi import DS18B20, OneWireError
 import machine, time
 
 # レベルシフタのVCCA用に3.3Vが必要な場合の一例(3端子レギュレータやM5-Busの3V3ピンなど、
-# 他の方法で3.3Vを供給しているならこの2行は不要)
+# 他の方法で3.3Vを供給しているならこの行は不要)
 machine.Pin(17, machine.Pin.OUT).value(1)
 
 sensor = DS18B20(26)  # DQ = GPIO26
