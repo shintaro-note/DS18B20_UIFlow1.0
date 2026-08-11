@@ -40,15 +40,14 @@
   <!-- レベルシフタ内部の仕切り線 -->
   <line x1="410" y1="178" x2="410" y2="355" stroke="#dfefff" stroke-width="1"/>
 
-  <!-- プルアップ抵抗: B0(DQ行)とVCCB(電源行)を直結。実線(GND行はまたがない) -->
-  <line x1="490" y1="275" x2="530" y2="275" stroke="#e17055" stroke-width="2"/>
-  <line x1="560" y1="275" x2="580" y2="275" stroke="#e17055" stroke-width="2"/>
-  <line x1="580" y1="275" x2="580" y2="345" stroke="#e17055" stroke-width="2"/>
+  <!-- プルアップ抵抗: DQバスとVCCBバスをそれぞれ連続させたまま、その間を抵抗で分岐接続する -->
+  <line x1="490" y1="275" x2="635" y2="275" stroke="#e17055" stroke-width="2"/> <!-- DQバス(連続、抵抗を経由しない) -->
+  <line x1="490" y1="345" x2="635" y2="345" stroke="#d63031" stroke-width="2"/> <!-- VDD/VCCBバス(連続) -->
+  <line x1="580" y1="275" x2="580" y2="295" stroke="#e17055" stroke-width="2"/>
+  <line x1="580" y1="325" x2="580" y2="345" stroke="#e17055" stroke-width="2"/>
 
-  <!-- レベルシフタ -> センサーA -->
-  <line x1="580" y1="275" x2="635" y2="275" stroke="#e17055" stroke-width="2"/> <!-- DQ -->
+  <!-- レベルシフタ -> センサーA (GNDのみ、DQ/VDDは上でバスとして描画済み) -->
   <line x1="490" y1="190" x2="635" y2="190" stroke="#636e72" stroke-width="2"/> <!-- GND -->
-  <line x1="490" y1="345" x2="635" y2="345" stroke="#d63031" stroke-width="2"/> <!-- VDD -->
 
   <!-- センサー間のデイジーチェーン配線 -->
   <line x1="695" y1="190" x2="755" y2="190" stroke="#636e72" stroke-width="2"/>
@@ -97,9 +96,9 @@
   <circle cx="490" cy="345" r="4" fill="#d63031"/>
   <text x="480" y="349" text-anchor="end" font-size="11" fill="#fff">VCCB</text>
 
-  <!-- プルアップ抵抗と、バスラインとの結線点(交点の黒丸=結線あり) -->
-  <rect x="530" y="265" width="30" height="20" fill="none" stroke="#e17055" stroke-width="2"/>
-  <text x="545" y="257" text-anchor="middle" font-size="10" fill="#333">2.2〜4.7kΩ</text>
+  <!-- プルアップ抵抗本体(DQバスとVCCBバスを結ぶ縦の枝の途中に配置) -->
+  <rect x="570" y="295" width="20" height="30" fill="none" stroke="#e17055" stroke-width="2"/>
+  <text x="598" y="314" font-size="10" fill="#333">2.2〜4.7kΩ</text>
   <circle cx="580" cy="275" r="3.5" fill="#e17055"/>
   <circle cx="580" cy="345" r="3.5" fill="#e17055"/>
 
