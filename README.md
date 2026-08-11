@@ -95,10 +95,10 @@ while True:
 
 1. UIFlowの `Custom(Beta) > Open *.m5b file` から読み込み
 2. `Init` ブロックでDQピン(dq_pin)を指定（電源の取り方はセンサーの動作とは無関係な配線側の選択なので、`Init`ブロックにはDQピンしか持たせていません。レベルシフタのVCCA用にGPIOをHIGH固定で3.3V代わりに使いたい場合は、`Init`より前に`machine.Pin(17, machine.Pin.OUT).value(1)`のような処理を別の実行コードブロックとして追加してください)
-![17pin Digital out](docs/block_jp.png)
+![digital 17pin out](docs/digital_17pin_out.png)
 4. `Scan` ブロックで検出台数を確認(期待台数(expected / 0 だと無条件で見つかった数)・最大リトライ回数(max_tries / 期待台数検出しなかったらリトライする回数。検出がうまくいかず、エラーが出るようならリトライ数を増やす)を指定可能)
 5. `Convert` → `Read` の順にブロックをつなげてループさせる(indexはセンサ番号 / 0～)
-![block example](docs/block_en.png)　![日本語ブロック例](docs/block_jp.png)
+![block example](docs/block_example.png)
 ## 謝辞 / 参考文献
 
 - ベースとした元のカスタムブロック実装: [stonatm/UiFlow-custom-blocks](https://github.com/stonatm/UiFlow-custom-blocks)
