@@ -69,8 +69,9 @@ DQ-VDD間に2.2kΩ〜4.7kΩ程度のプルアップ抵抗を入れてくださ�
 from ds18b20_multi import DS18B20, OneWireError
 import machine, time
 
-vcc_pin = machine.Pin(17, machine.Pin.OUT)  # パラサイトでない構成の電源ピン(必要に応じて)
-vcc_pin.value(1)
+# レベルシフタのVCCA用に3.3Vが必要な場合の一例(3端子レギュレータやM5-Busの3V3ピンなど、
+# 他の方法で3.3Vを供給しているならこの2行は不要)
+machine.Pin(17, machine.Pin.OUT).value(1)
 
 sensor = DS18B20(26)  # DQ = GPIO26
 roms = sensor.scan(check_crc=True)  # バス上の全センサーのROMコードを取得
