@@ -1,0 +1,142 @@
+<svg width="1100" height="560" viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Hiragino Sans', sans-serif">
+  <rect width="1100" height="560" fill="#ffffff"/>
+
+  <text x="20" y="30" font-size="18" font-weight="bold" fill="#222">DS18B20 配線図(3端子レギュレータで3.3V駆動・レベルシフタ不要)</text>
+  <text x="20" y="50" font-size="11" fill="#777">DS18B20をVDD=3.3Vで駆動すればDQ線も3.3V止まりになるため、5V⇔3.3V変換が不要になる構成</text>
+
+  <!-- ============ LAYER 1: 箱(背景図形) ============ -->
+  <rect x="20" y="100" width="140" height="220" rx="10" fill="#2d3436" stroke="#111" stroke-width="1.5"/>
+  <text x="90" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">M5GO</text>
+  <text x="90" y="141" text-anchor="middle" font-size="12" fill="#ccc">(M5Stack Core)</text>
+
+  <rect x="280" y="350" width="170" height="100" rx="10" fill="#6c5ce7" stroke="#111" stroke-width="1.5"/>
+  <text x="365" y="378" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">3端子レギュレータ</text>
+  <text x="365" y="394" text-anchor="middle" font-size="11" fill="#e8e4fd">(例: AMS1117-3.3 / HT7333)</text>
+
+  <rect x="650" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="695" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="695" y="141" text-anchor="middle" font-size="12" fill="#222">センサーA</text>
+
+  <rect x="770" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="815" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="815" y="141" text-anchor="middle" font-size="12" fill="#222">センサーB</text>
+
+  <rect x="890" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="935" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="935" y="141" text-anchor="middle" font-size="12" fill="#222">センサーC</text>
+
+  <rect x="1010" y="100" width="60" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="1040" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">D</text>
+
+  <!-- ============ LAYER 2: 配線 ============ -->
+  <!-- メインの幹線: DQとGNDはM5GOからセンサーまで連続、途中のレギュレータには接続しない -->
+  <line x1="180" y1="170" x2="1055" y2="170" stroke="#e17055" stroke-width="2"/> <!-- DQ -->
+  <line x1="180" y1="290" x2="1055" y2="290" stroke="#636e72" stroke-width="2"/> <!-- GND -->
+  <!-- VDD(3.3V)バスはレギュレータの出力から右側(センサー側)だけに存在 -->
+  <line x1="430" y1="230" x2="1055" y2="230" stroke="#d63031" stroke-width="2"/> <!-- VDD -->
+
+  <!-- M5GOのGrove5V -> レギュレータIN -->
+  <line x1="180" y1="230" x2="300" y2="230" stroke="#fd79a8" stroke-width="2"/>
+  <line x1="300" y1="230" x2="300" y2="350" stroke="#fd79a8" stroke-width="2"/>
+
+  <!-- レギュレータGND -> GNDバス(分岐) -->
+  <line x1="365" y1="350" x2="365" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <!-- レギュレータOUT(3.3V) -> VDDバス開始点 -->
+  <line x1="430" y1="350" x2="430" y2="230" stroke="#d63031" stroke-width="2"/>
+
+  <!-- プルアップ抵抗: DQバスとVDD(3.3V)バスを分岐で接続 -->
+  <line x1="550" y1="170" x2="550" y2="185" stroke="#e17055" stroke-width="2"/>
+  <line x1="550" y1="215" x2="550" y2="230" stroke="#e17055" stroke-width="2"/>
+
+  <!-- センサー間のデイジーチェーン配線 -->
+  <line x1="710" y1="170" x2="770" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="710" y1="230" x2="770" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="710" y1="290" x2="770" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="830" y1="170" x2="890" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="830" y1="230" x2="890" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="830" y1="290" x2="890" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="950" y1="170" x2="1010" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="950" y1="230" x2="1010" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="950" y1="290" x2="1010" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <!-- ============ LAYER 3: 点・結線マーク・ラベル(常に最前面) ============ -->
+  <!-- M5GO側 -->
+  <circle cx="178" cy="170" r="4" fill="#e17055"/>
+  <text x="190" y="174" font-size="12" fill="#222">GPIO26 (DQ)</text>
+
+  <circle cx="178" cy="230" r="4" fill="#fd79a8"/>
+  <text x="190" y="234" font-size="12" fill="#222">Grove 5V</text>
+
+  <circle cx="178" cy="290" r="4" fill="#636e72"/>
+  <text x="190" y="294" font-size="12" fill="#222">GND</text>
+
+  <!-- レギュレータ側 -->
+  <circle cx="300" cy="350" r="4" fill="#fd79a8"/>
+  <text x="310" y="368" font-size="11" fill="#fff">IN(5V)</text>
+
+  <circle cx="365" cy="350" r="4" fill="#636e72"/>
+  <text x="365" y="368" text-anchor="middle" font-size="11" fill="#fff">GND</text>
+
+  <circle cx="430" cy="350" r="4" fill="#d63031"/>
+  <text x="415" y="368" text-anchor="end" font-size="11" fill="#fff">OUT(3.3V)</text>
+
+  <circle cx="365" cy="290" r="3.5" fill="#636e72"/>
+  <circle cx="430" cy="230" r="3.5" fill="#d63031"/>
+
+  <!-- プルアップ抵抗本体 -->
+  <rect x="540" y="185" width="20" height="30" fill="none" stroke="#e17055" stroke-width="2"/>
+  <text x="568" y="204" font-size="10" fill="#333">2.2〜4.7kΩ</text>
+  <circle cx="550" cy="170" r="3.5" fill="#e17055"/>
+  <circle cx="550" cy="230" r="3.5" fill="#e17055"/>
+
+  <!-- センサーA -->
+  <circle cx="665" cy="170" r="4" fill="#e17055"/><text x="675" y="174" font-size="10" fill="#222">DQ</text>
+  <circle cx="665" cy="230" r="4" fill="#d63031"/><text x="675" y="234" font-size="10" fill="#222">VDD</text>
+  <circle cx="665" cy="290" r="4" fill="#636e72"/><text x="675" y="294" font-size="10" fill="#222">GND</text>
+  <circle cx="710" cy="170" r="3" fill="#e17055"/>
+  <circle cx="710" cy="230" r="3" fill="#d63031"/>
+  <circle cx="710" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーB -->
+  <circle cx="770" cy="170" r="3" fill="#e17055"/>
+  <circle cx="770" cy="230" r="3" fill="#d63031"/>
+  <circle cx="770" cy="290" r="3" fill="#636e72"/>
+  <circle cx="830" cy="170" r="3" fill="#e17055"/>
+  <circle cx="830" cy="230" r="3" fill="#d63031"/>
+  <circle cx="830" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーC -->
+  <circle cx="890" cy="170" r="3" fill="#e17055"/>
+  <circle cx="890" cy="230" r="3" fill="#d63031"/>
+  <circle cx="890" cy="290" r="3" fill="#636e72"/>
+  <circle cx="950" cy="170" r="3" fill="#e17055"/>
+  <circle cx="950" cy="230" r="3" fill="#d63031"/>
+  <circle cx="950" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーD -->
+  <circle cx="1010" cy="170" r="3" fill="#e17055"/>
+  <circle cx="1010" cy="230" r="3" fill="#d63031"/>
+  <circle cx="1010" cy="290" r="3" fill="#636e72"/>
+
+  <text x="820" y="440" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">↑ センサーを中継地点として一本道でつなぐ(デイジーチェーン、変わらず推奨)</text>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#222">
+    <line x1="30" y1="470" x2="60" y2="470" stroke="#e17055" stroke-width="3"/>
+    <text x="70" y="474">DQ (データ線)</text>
+
+    <line x1="30" y1="495" x2="60" y2="495" stroke="#d63031" stroke-width="3"/>
+    <text x="70" y="499">3.3V (VDD)</text>
+
+    <line x1="30" y1="520" x2="60" y2="520" stroke="#fd79a8" stroke-width="3"/>
+    <text x="70" y="524">Grove 5V (レギュレータ入力のみ)</text>
+
+    <line x1="260" y1="470" x2="290" y2="470" stroke="#636e72" stroke-width="3"/>
+    <text x="300" y="474">GND</text>
+  </g>
+
+  <text x="20" y="548" font-size="12" fill="#555">注記: レベルシフタは不要。DQ線のプルアップ(2.2〜4.7kΩ)は3.3V(VDD)側に接続する。レギュレータの入出力にコンデンサ(例:10μF)を推奨</text>
+</svg>

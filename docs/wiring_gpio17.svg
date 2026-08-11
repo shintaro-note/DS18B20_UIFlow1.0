@@ -1,0 +1,105 @@
+<svg width="900" height="480" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Hiragino Sans', sans-serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+
+  <text x="20" y="30" font-size="18" font-weight="bold" fill="#222">DS18B20 配線図(GPIO17をHIGH固定して3.3V駆動・部品追加なし)</text>
+  <text x="20" y="50" font-size="11" fill="#777">GPIOをそのまま3.3V電源として使う、最も手軽な構成(台数が多い場合は電流に注意)</text>
+
+  <!-- ============ LAYER 1: 箱(背景図形) ============ -->
+  <rect x="20" y="100" width="140" height="220" rx="10" fill="#2d3436" stroke="#111" stroke-width="1.5"/>
+  <text x="90" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">M5GO</text>
+  <text x="90" y="141" text-anchor="middle" font-size="12" fill="#ccc">(M5Stack Core)</text>
+
+  <rect x="470" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="515" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="515" y="141" text-anchor="middle" font-size="12" fill="#222">センサーA</text>
+
+  <rect x="580" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="625" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="625" y="141" text-anchor="middle" font-size="12" fill="#222">センサーB</text>
+
+  <rect x="690" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="735" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="735" y="141" text-anchor="middle" font-size="12" fill="#222">センサーC</text>
+
+  <rect x="800" y="100" width="60" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="830" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">D</text>
+
+  <!-- ============ LAYER 2: 配線(すべて連続。途中に変換部品が無い) ============ -->
+  <line x1="180" y1="170" x2="485" y2="170" stroke="#e17055" stroke-width="2"/> <!-- DQ -->
+  <line x1="180" y1="230" x2="485" y2="230" stroke="#d63031" stroke-width="2"/> <!-- 3.3V/VDD -->
+  <line x1="180" y1="290" x2="485" y2="290" stroke="#636e72" stroke-width="2"/> <!-- GND -->
+
+  <!-- プルアップ抵抗: DQバスと3.3V(VDD)バスを分岐で接続 -->
+  <line x1="350" y1="170" x2="350" y2="185" stroke="#e17055" stroke-width="2"/>
+  <line x1="350" y1="215" x2="350" y2="230" stroke="#e17055" stroke-width="2"/>
+
+  <!-- センサー間のデイジーチェーン配線 -->
+  <line x1="545" y1="170" x2="595" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="545" y1="230" x2="595" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="545" y1="290" x2="595" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="655" y1="170" x2="705" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="655" y1="230" x2="705" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="655" y1="290" x2="705" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="765" y1="170" x2="815" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="765" y1="230" x2="815" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="765" y1="290" x2="815" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <!-- ============ LAYER 3: 点・ラベル(常に最前面) ============ -->
+  <circle cx="178" cy="170" r="4" fill="#e17055"/>
+  <text x="190" y="174" font-size="12" fill="#222">GPIO26 (DQ)</text>
+
+  <circle cx="178" cy="230" r="4" fill="#d63031"/>
+  <text x="190" y="234" font-size="12" fill="#222">GPIO17 (3.3V, HIGH固定)</text>
+
+  <circle cx="178" cy="290" r="4" fill="#636e72"/>
+  <text x="190" y="294" font-size="12" fill="#222">GND</text>
+
+  <!-- プルアップ抵抗本体 -->
+  <rect x="340" y="185" width="20" height="30" fill="none" stroke="#e17055" stroke-width="2"/>
+  <text x="368" y="204" font-size="10" fill="#333">2.2〜4.7kΩ</text>
+  <circle cx="350" cy="170" r="3.5" fill="#e17055"/>
+  <circle cx="350" cy="230" r="3.5" fill="#e17055"/>
+
+  <!-- センサーA -->
+  <circle cx="485" cy="170" r="4" fill="#e17055"/><text x="495" y="174" font-size="10" fill="#222">DQ</text>
+  <circle cx="485" cy="230" r="4" fill="#d63031"/><text x="495" y="234" font-size="10" fill="#222">VDD</text>
+  <circle cx="485" cy="290" r="4" fill="#636e72"/><text x="495" y="294" font-size="10" fill="#222">GND</text>
+  <circle cx="545" cy="170" r="3" fill="#e17055"/>
+  <circle cx="545" cy="230" r="3" fill="#d63031"/>
+  <circle cx="545" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーB -->
+  <circle cx="595" cy="170" r="3" fill="#e17055"/>
+  <circle cx="595" cy="230" r="3" fill="#d63031"/>
+  <circle cx="595" cy="290" r="3" fill="#636e72"/>
+  <circle cx="655" cy="170" r="3" fill="#e17055"/>
+  <circle cx="655" cy="230" r="3" fill="#d63031"/>
+  <circle cx="655" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーC -->
+  <circle cx="705" cy="170" r="3" fill="#e17055"/>
+  <circle cx="705" cy="230" r="3" fill="#d63031"/>
+  <circle cx="705" cy="290" r="3" fill="#636e72"/>
+  <circle cx="765" cy="170" r="3" fill="#e17055"/>
+  <circle cx="765" cy="230" r="3" fill="#d63031"/>
+  <circle cx="765" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーD -->
+  <circle cx="815" cy="170" r="3" fill="#e17055"/>
+  <circle cx="815" cy="230" r="3" fill="#d63031"/>
+  <circle cx="815" cy="290" r="3" fill="#636e72"/>
+
+  <text x="640" y="440" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">↑ センサーを中継地点として一本道でつなぐ(デイジーチェーン、変わらず推奨)</text>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#222">
+    <line x1="30" y1="470" x2="60" y2="470" stroke="#e17055" stroke-width="3"/>
+    <text x="70" y="474">DQ (データ線)</text>
+  </g>
+
+  <text x="20" y="400" font-size="12" fill="#a94442">注意: GPIO直結はセンサーの動作電流(1台あたり最大約4mA)をそのまま負担します。台数が増える場合は</text>
+  <text x="20" y="418" font-size="12" fill="#a94442">GPIOの安全な連続出力電流(目安12mA程度)を超えないか確認してください。超える可能性があれば</text>
+  <text x="20" y="436" font-size="12" fill="#a94442">3端子レギュレータ版(docs/wiring_regulator.svg)への切り替えを推奨します。</text>
+</svg>

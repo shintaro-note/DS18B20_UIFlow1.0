@@ -1,0 +1,98 @@
+<svg width="900" height="440" viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', 'Hiragino Sans', sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+
+  <text x="20" y="30" font-size="18" font-weight="bold" fill="#222">DS18B20 配線図(M-Busの3.3Vピンを直接使用・最優先の構成)</text>
+  <text x="20" y="50" font-size="11" fill="#777">M-Busにアクセスできる機種向け。正規の3.3V電源レールなので、部品追加・電流の心配ともに不要</text>
+
+  <!-- ============ LAYER 1: 箱(背景図形) ============ -->
+  <rect x="20" y="100" width="160" height="220" rx="10" fill="#2d3436" stroke="#111" stroke-width="1.5"/>
+  <text x="100" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">M5Stack Core</text>
+  <text x="100" y="141" text-anchor="middle" font-size="12" fill="#ccc">(M-Busアクセス可能な機種)</text>
+
+  <rect x="490" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="535" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="535" y="141" text-anchor="middle" font-size="12" fill="#222">センサーA</text>
+
+  <rect x="600" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="645" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="645" y="141" text-anchor="middle" font-size="12" fill="#222">センサーB</text>
+
+  <rect x="710" y="100" width="90" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="755" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">DS18B20</text>
+  <text x="755" y="141" text-anchor="middle" font-size="12" fill="#222">センサーC</text>
+
+  <rect x="820" y="100" width="60" height="220" rx="8" fill="#fdcb6e" stroke="#111" stroke-width="1.2"/>
+  <text x="850" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">D</text>
+
+  <!-- ============ LAYER 2: 配線(すべて連続。途中に変換部品が無い) ============ -->
+  <line x1="200" y1="170" x2="505" y2="170" stroke="#e17055" stroke-width="2"/> <!-- DQ -->
+  <line x1="200" y1="230" x2="505" y2="230" stroke="#d63031" stroke-width="2"/> <!-- 3.3V/VDD -->
+  <line x1="200" y1="290" x2="505" y2="290" stroke="#636e72" stroke-width="2"/> <!-- GND -->
+
+  <!-- プルアップ抵抗: DQバスと3.3V(VDD)バスを分岐で接続 -->
+  <line x1="370" y1="170" x2="370" y2="185" stroke="#e17055" stroke-width="2"/>
+  <line x1="370" y1="215" x2="370" y2="230" stroke="#e17055" stroke-width="2"/>
+
+  <!-- センサー間のデイジーチェーン配線 -->
+  <line x1="565" y1="170" x2="615" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="565" y1="230" x2="615" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="565" y1="290" x2="615" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="675" y1="170" x2="725" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="675" y1="230" x2="725" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="675" y1="290" x2="725" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <line x1="785" y1="170" x2="835" y2="170" stroke="#e17055" stroke-width="2"/>
+  <line x1="785" y1="230" x2="835" y2="230" stroke="#d63031" stroke-width="2"/>
+  <line x1="785" y1="290" x2="835" y2="290" stroke="#636e72" stroke-width="2"/>
+
+  <!-- ============ LAYER 3: 点・ラベル(常に最前面) ============ -->
+  <circle cx="178" cy="170" r="4" fill="#e17055"/>
+  <text x="190" y="174" font-size="12" fill="#222">GPIO26 (DQ)</text>
+
+  <circle cx="178" cy="230" r="4" fill="#d63031"/>
+  <text x="190" y="234" font-size="12" fill="#222">M-Bus 3V3 (正規の3.3V電源)</text>
+
+  <circle cx="178" cy="290" r="4" fill="#636e72"/>
+  <text x="190" y="294" font-size="12" fill="#222">M-Bus GND</text>
+
+  <!-- プルアップ抵抗本体 -->
+  <rect x="360" y="185" width="20" height="30" fill="none" stroke="#e17055" stroke-width="2"/>
+  <text x="388" y="204" font-size="10" fill="#333">2.2〜4.7kΩ</text>
+  <circle cx="370" cy="170" r="3.5" fill="#e17055"/>
+  <circle cx="370" cy="230" r="3.5" fill="#e17055"/>
+
+  <!-- センサーA -->
+  <circle cx="505" cy="170" r="4" fill="#e17055"/><text x="515" y="174" font-size="10" fill="#222">DQ</text>
+  <circle cx="505" cy="230" r="4" fill="#d63031"/><text x="515" y="234" font-size="10" fill="#222">VDD</text>
+  <circle cx="505" cy="290" r="4" fill="#636e72"/><text x="515" y="294" font-size="10" fill="#222">GND</text>
+  <circle cx="565" cy="170" r="3" fill="#e17055"/>
+  <circle cx="565" cy="230" r="3" fill="#d63031"/>
+  <circle cx="565" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーB -->
+  <circle cx="615" cy="170" r="3" fill="#e17055"/>
+  <circle cx="615" cy="230" r="3" fill="#d63031"/>
+  <circle cx="615" cy="290" r="3" fill="#636e72"/>
+  <circle cx="675" cy="170" r="3" fill="#e17055"/>
+  <circle cx="675" cy="230" r="3" fill="#d63031"/>
+  <circle cx="675" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーC -->
+  <circle cx="725" cy="170" r="3" fill="#e17055"/>
+  <circle cx="725" cy="230" r="3" fill="#d63031"/>
+  <circle cx="725" cy="290" r="3" fill="#636e72"/>
+  <circle cx="785" cy="170" r="3" fill="#e17055"/>
+  <circle cx="785" cy="230" r="3" fill="#d63031"/>
+  <circle cx="785" cy="290" r="3" fill="#636e72"/>
+
+  <!-- センサーD -->
+  <circle cx="835" cy="170" r="3" fill="#e17055"/>
+  <circle cx="835" cy="230" r="3" fill="#d63031"/>
+  <circle cx="835" cy="290" r="3" fill="#636e72"/>
+
+  <text x="660" y="400" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">↑ センサーを中継地点として一本道でつなぐ(デイジーチェーン、変わらず推奨)</text>
+
+  <text x="20" y="360" font-size="12" fill="#0f6e56">M-Busの3V3はGPIOではなく正規の電源レール(通常数百mA以上供給可能)なので、</text>
+  <text x="20" y="378" font-size="12" fill="#0f6e56">GPIO直結版のような電流面の心配は不要。台数を増やしても安心して使える。</text>
+</svg>
