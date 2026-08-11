@@ -61,7 +61,7 @@ DQ-VDD間に2.2kΩ〜4.7kΩ程度のプルアップ抵抗を入れてくださ�
 ## ファイル構成
 
 - `ds18b20_multi.py` — 単体で使えるMicroPythonライブラリ。UIFlowにファイル転送してimportして使う想定です
-- `*.m5b` — UIFlowのCustom(Beta)機能から読み込めるカスタムブロックファイル(`ds18b20_multi.py`のファイル転送不要、ブロック単体をUIFlow1.0で読み込むだけで完結)
+- `ds18b20_multi.m5b` — UIFlowのCustom(Beta)機能から読み込めるカスタムブロックファイル(`ds18b20_multi.py`のファイル転送不要、ブロック単体をUIFlow1.0で読み込むだけで完結)
 
 ## 使い方: ライブラリを直接使う場合
 
